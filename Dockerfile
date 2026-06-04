@@ -2,15 +2,15 @@ FROM pramonettivega/terra:0.1
 
 SHELL ["/bin/bash", "-euxo", "pipefail", "-c"]
 
-WORKDIR /opt
+WORKDIR /home/jovyan
 
 RUN git clone https://github.com/radiant-systems-lab/Flinc.git
 
-WORKDIR /opt/Flinc
+WORKDIR /home/jovyan/Flinc
 
 RUN git clone https://github.com/radiant-systems-lab/sciunit.git
 
-WORKDIR /opt/Flinc/sciunit
+WORKDIR /home/jovyan/Flinc/sciunit
 
 RUN git fetch \
     && git checkout fix-sciunit-copy
@@ -19,7 +19,7 @@ RUN python -m pip install --no-cache-dir cmake==3.22.1
 
 RUN python -m pip install --no-cache-dir .
 
-WORKDIR /opt/Flinc
+WORKDIR /home/jovyan/Flinc
 
 RUN git checkout nasa-demo
 
